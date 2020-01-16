@@ -89,6 +89,7 @@ class RefreshGithubCommits extends ApiRequestHandler<Body> {
           repository: 'flutter/flutter',
           sha: commit.sha,
           author: commit.author.login,
+          message: commit.commit.message,
           authorAvatarUrl: commit.author.avatarUrl,
         ));
       } else {

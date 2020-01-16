@@ -340,7 +340,8 @@ class AppEngineCocoonService implements CocoonService {
       ..sha = commit['Sha']
       ..author = author['Login']
       ..authorAvatarUrl = author['avatar_url']
-      ..repository = jsonCommit['FlutterRepositoryPath'];
+      ..repository = jsonCommit['FlutterRepositoryPath']
+      ..message = commit['Message'];
   }
 
   List<Stage> _stagesFromJson(List<Object> json) {

@@ -18,6 +18,7 @@ class Commit extends Model {
     this.timestamp,
     this.sha,
     this.author,
+    this.message,
     this.authorAvatarUrl,
     this.repository,
   }) {
@@ -37,6 +38,10 @@ class Commit extends Model {
   /// The GitHub username of the commit author.
   @StringProperty(propertyName: 'Commit.Author.Login', required: true)
   String author;
+
+  /// The one-line text description of the commit.
+  @StringProperty(propertyName: 'Commit.Message', required: true)
+  String message;
 
   /// URL of the [author]'s profile image / avatar.
   ///
@@ -60,6 +65,7 @@ class Commit extends Model {
       ..write(', timestamp: $timestamp')
       ..write(', sha: $sha')
       ..write(', author: $author')
+      ..write(', message: $message')
       ..write(', authorAvatarUrl: $authorAvatarUrl')
       ..write(', repository: $repository')
       ..write(')');
@@ -86,6 +92,7 @@ class SerializableCommit {
       'CreateTimestamp': commit.timestamp,
       'Commit': <String, dynamic>{
         'Sha': commit.sha,
+        'Message': commit.message,
         'Author': <String, dynamic>{
           'Login': commit.author,
           'avatar_url': commit.authorAvatarUrl,
